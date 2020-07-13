@@ -8,17 +8,28 @@
 #script. The file contains this poem:# 
 
 
-def count_words(file):
+def count_words(filename):
 
-    text_file = open(file)
+    import sys
+
+    filename = sys.argv[1]
+
+    #text_file = open(file)
 
     word_counts = {}
 
-    for line in text_file:
+    punctuations = ''',.?!()-[]{};:'"\<>/@#$&%^~_'''
+
+    for line in open(filename):
         line = line.rstrip()
         words = line.split(' ')
 
         for word in words:
+            for character in word:
+                if character in punctuations:
+                    word = word.replace(character, '')
+
+            word = word.lower()
             word_counts[word] = word_counts.get(word, 0) + 1
     
     word_counts.items()
@@ -26,4 +37,4 @@ def count_words(file):
     for word, number in word_counts.items():
         print (f"{word} {number}")
 
-count_words('test.txt')
+count_words(str)
