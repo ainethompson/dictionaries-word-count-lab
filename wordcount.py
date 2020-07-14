@@ -1,4 +1,4 @@
-
+import sys
 
 #Write a program, wordcount.py, that opens a file and counts how many times each 
 #space-separated word occurs in that file. Your program should then print those 
@@ -9,12 +9,6 @@
 
 
 def count_words(filename):
-
-    import sys
-
-    filename = sys.argv[1]
-
-    #text_file = open(file)
 
     word_counts = {}
 
@@ -37,4 +31,4 @@ def count_words(filename):
     for word, number in word_counts.items():
         print (f"{word} {number}")
 
-count_words(str)
+count_words(filename = sys.argv[1])
